@@ -15,10 +15,6 @@ char *readIn() {
     return "";
 }
 
-int ReadInt() {
-    return atoi(readIn());
-}
-
 int main(int argc, char const *argv[]) {
     #ifdef DEBUG
     printf("+--------------------+\n| Build ID: %s |\n+--------------------+\n\n", MACRO(BUILDID));
