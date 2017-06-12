@@ -32,31 +32,35 @@ int main(int argc, char const *argv[]) {
     //printf("strlen: %lu\n", strlen(c));
     //printf("C: %s\n", c);
 
-    int p = strlen(c)-2;
+    int p = strlen(c)-3;
     int st = 0;
 
     while (p >= 0) {
         cl[0] = c[p];
-        if (p % 2 == 1) {
-            int o = (atoi(cl) * 2);
-            if (o > 9) {
-                char f[3];
-                sprintf(f, "%i", o);
-                char cv[2];
-                cv[1] = '\0';
-                cv[0] = f[0];
-                o = atoi(cv);
-                cv[0] = f[1];
-                o += atoi(cv);
-            }
-            st = st + o;
-        } else {
-            st = st + atoi(cl);
+        int o = (atoi(cl) * 2);
+        if (o > 9) {
+            char f[3];
+            sprintf(f, "%i", o);
+            char cv[2];
+            cv[1] = '\0';
+            cv[0] = f[0];
+            o = atoi(cv);
+            cv[0] = f[1];
+            o += atoi(cv);
         }
-        //printf("P: %i, C: %c, S: %i, ST: %i\n", p, c[p], atoi(cl), st);
-        p--;
+        st = st + o;
+        //printf("*P: %i, C: %c, S: %i, ST: %i, Y: %i\n", p, c[p], atoi(cl), st, o);
+        p = p - 2;
     }
 
+    p = strlen(c)-2;
+
+    while (p >= 0) {
+        cl[0] = c[p];
+        st = st + atoi(cl);
+        //printf("+P: %i, C: %c, S: %i, ST: %i, Y: %i\n", p, c[p], atoi(cl), st, atoi(cl));
+        p = p - 2;
+    }
     //printf("Calculated: %i\n", st);
     if (st % 10 == 0) {
         printf("VALID\n");
